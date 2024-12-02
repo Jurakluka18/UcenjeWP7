@@ -10,14 +10,14 @@ go
 use vjezba;
 
 create table IspitniRok(
-sifra int,
-predmet varchar(50),
-vrstaIspita varchar(50),
+sifra int not null primary key identity(1,1),
+predmet varchar(50) not null,
+vrstaIspita varchar(50) not null,
 datum datetime,
-pristupio bit);
+pristupio bit not null);
 
 create table Pristupnici(
-ispitniRok int,
-student varchar(50),
-brojBodova int,
-ocjena char(1));
+ispitniRok int not null references IspitniRok(sifra),
+student varchar(50) not null,
+brojBodova int not null,
+ocjena char(1) not null);
